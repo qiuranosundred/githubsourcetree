@@ -38,6 +38,7 @@ extern "C" {
 //#include "crc16_ccitt.h"
 //#include "usart_redirect.h"
 
+#include "lvgl.h"
 #include "LCD.h"
 //#include "string.h"
 //#include "stdio.h"
@@ -139,7 +140,7 @@ typedef struct
 	uint32_t	c_ms;
 
 }TimerTypeDef;
-
+#define __RTOS 1
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

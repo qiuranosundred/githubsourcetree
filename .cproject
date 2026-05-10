@@ -72,6 +72,7 @@
 									<listOptionValue builtIn="false" value="../LVGL/demo/keypad_encoder"/>
 									<listOptionValue builtIn="false" value="../LVGL/demo/stress"/>
 									<listOptionValue builtIn="false" value="../LVGL/demo/widgets"/>
+									<listOptionValue builtIn="false" value="../UI"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.126762049" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>

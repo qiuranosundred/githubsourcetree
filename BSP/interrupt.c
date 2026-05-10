@@ -148,7 +148,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 
     if(htim->Instance == TIM10)// 1ms
     {
-
+    	lv_tick_inc(1); // 告诉LVGL：时间过了1ms
   	}
 }
 

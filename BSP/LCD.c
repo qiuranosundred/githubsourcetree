@@ -93,125 +93,154 @@ uint8_t Lcd_RDD_COLMOD(void)
 *******************************************************************************/
 void Lcd_Init(void)
 {
-	LCD_BLK_OFF();
-	LCD_RST_Clr();
-	HAL_Delay(20);
-	LCD_RST_Set();
-	HAL_Delay(20);
+    LCD_BLK_OFF();
+    LCD_RST_Clr();
+    HAL_Delay(20);
+    LCD_RST_Set();
+    HAL_Delay(20);
 
-	LockLcd();
+    LockLcd();
 
-	LCD_WR_REG(0x11);//Sleep exit
-	HAL_Delay(125);// 5-120ms
+    LCD_WR_REG(0x11);     // Sleep exit
+    HAL_Delay(120);
 
-	LCD_WR_REG(0xB1);
-	LCD_WR_DATA8(0x05);
-	LCD_WR_DATA8(0x3C);
-	LCD_WR_DATA8(0x3C);
-	LCD_WR_REG(0xB2);
-	LCD_WR_DATA8(0x05);
-	LCD_WR_DATA8(0x3C);
-	LCD_WR_DATA8(0x3C);
-	LCD_WR_REG(0xB3);
-	LCD_WR_DATA8(0x05);
-	LCD_WR_DATA8(0x3C);
-	LCD_WR_DATA8(0x3C);
-	LCD_WR_DATA8(0x05);
-	LCD_WR_DATA8(0x3C);
-	LCD_WR_DATA8(0x3C);
-	//-----End ST7735S Frame Rate-----//
-	LCD_WR_REG(0xB4); //Dot inversion
-	LCD_WR_DATA8(0x03);
-	LCD_WR_REG(0xC0);
-	LCD_WR_DATA8(0x28);
-	LCD_WR_DATA8(0x08);
-	LCD_WR_DATA8(0x04);
-	LCD_WR_REG(0xC1);
-	LCD_WR_DATA8(0XC0);
-	LCD_WR_REG(0xC2);
-	LCD_WR_DATA8(0x0D);
-	LCD_WR_DATA8(0x00);
-	LCD_WR_REG(0xC3);
-	LCD_WR_DATA8(0x8D);
-	LCD_WR_DATA8(0x2A);
-	LCD_WR_REG(0xC4);
-	LCD_WR_DATA8(0x8D);
-	LCD_WR_DATA8(0xEE);
-	//----End ST7735S Power Sequence----//
-	LCD_WR_REG(0xC5); //VCOM
-	LCD_WR_DATA8(0x1A);
-	LCD_WR_REG(0x36); //MX, MY, RGB mode
-	LCD_WR_DATA8(0xC0);
-	//-----ST7735S Gamma Sequence-----//
-	LCD_WR_REG(0xE0);
-	LCD_WR_DATA8(0x04);
-	LCD_WR_DATA8(0x22);
-	LCD_WR_DATA8(0x07);
-	LCD_WR_DATA8(0x0A);
-	LCD_WR_DATA8(0x2E);
-	LCD_WR_DATA8(0x30);
-	LCD_WR_DATA8(0x25);
-	LCD_WR_DATA8(0x2A);
-	LCD_WR_DATA8(0x28);
-	LCD_WR_DATA8(0x26);
-	LCD_WR_DATA8(0x2E);
-	LCD_WR_DATA8(0x3A);
-	LCD_WR_DATA8(0x00);
-	LCD_WR_DATA8(0x01);
-	LCD_WR_DATA8(0x03);
-	LCD_WR_DATA8(0x13);
-	LCD_WR_REG(0xE1);
-	LCD_WR_DATA8(0x04);
-	LCD_WR_DATA8(0x16);
-	LCD_WR_DATA8(0x06);
-	LCD_WR_DATA8(0x0D);
-	LCD_WR_DATA8(0x2D);
-	LCD_WR_DATA8(0x26);
-	LCD_WR_DATA8(0x23);
-	LCD_WR_DATA8(0x27);
-	LCD_WR_DATA8(0x27);
-	LCD_WR_DATA8(0x25);
-	LCD_WR_DATA8(0x2D);
-	LCD_WR_DATA8(0x3B);
-	LCD_WR_DATA8(0x00);
-	LCD_WR_DATA8(0x01);
-	LCD_WR_DATA8(0x04);
-	LCD_WR_DATA8(0x13);
-	//----End ST7735S Gamma Sequence----//
-	LCD_WR_REG(0x3A); //65k mode
-	LCD_WR_DATA8(0x05);
-	LCD_WR_REG(0x29); //Display on
+    LCD_WR_REG(0xB1);
+    LCD_WR_DATA8(0x05);
+    LCD_WR_DATA8(0x3C);
+    LCD_WR_DATA8(0x3C);
 
-	UnlockLcd();
+    LCD_WR_REG(0xB2);
+    LCD_WR_DATA8(0x05);
+    LCD_WR_DATA8(0x3C);
+    LCD_WR_DATA8(0x3C);
 
-#if !__RTOS
-	LCD_Clear(BLACK);
-	LCD_CS_Set();
-	HAL_Delay(50);
-#endif
+    LCD_WR_REG(0xB3);
+    LCD_WR_DATA8(0x05);
+    LCD_WR_DATA8(0x3C);
+    LCD_WR_DATA8(0x3C);
+    LCD_WR_DATA8(0x05);
+    LCD_WR_DATA8(0x3C);
+    LCD_WR_DATA8(0x3C);
 
-	LCD_BLK_ON();
+    LCD_WR_REG(0xB4);     // Dot inversion
+    LCD_WR_DATA8(0x03);
+
+    LCD_WR_REG(0xC0);
+    LCD_WR_DATA8(0x28);
+    LCD_WR_DATA8(0x08);
+    LCD_WR_DATA8(0x04);
+
+    LCD_WR_REG(0xC1);
+    LCD_WR_DATA8(0xC0);
+
+    LCD_WR_REG(0xC2);
+    LCD_WR_DATA8(0x0D);
+    LCD_WR_DATA8(0x00);
+
+    LCD_WR_REG(0xC3);
+    LCD_WR_DATA8(0x8D);
+    LCD_WR_DATA8(0x2A);
+
+    LCD_WR_REG(0xC4);
+    LCD_WR_DATA8(0x8D);
+    LCD_WR_DATA8(0xEE);
+
+    LCD_WR_REG(0xC5);     // VCOM
+    LCD_WR_DATA8(0x1A);
+
+    /* ============== 关键修改区域 ============== */
+    LCD_WR_REG(0x36);
+    LCD_WR_DATA8(0xC0);     // ← 先改回你原来的值（最可能适合横屏）
+
+    /* ========================================== */
+
+    LCD_WR_REG(0xE0);           // Gamma
+    LCD_WR_DATA8(0x04);
+    LCD_WR_DATA8(0x22);
+    LCD_WR_DATA8(0x07);
+    LCD_WR_DATA8(0x0A);
+    LCD_WR_DATA8(0x2E);
+    LCD_WR_DATA8(0x30);
+    LCD_WR_DATA8(0x25);
+    LCD_WR_DATA8(0x2A);
+    LCD_WR_DATA8(0x28);
+    LCD_WR_DATA8(0x26);
+    LCD_WR_DATA8(0x2E);
+    LCD_WR_DATA8(0x3A);
+    LCD_WR_DATA8(0x00);
+    LCD_WR_DATA8(0x01);
+    LCD_WR_DATA8(0x03);
+    LCD_WR_DATA8(0x13);
+
+    LCD_WR_REG(0xE1);
+    LCD_WR_DATA8(0x04);
+    LCD_WR_DATA8(0x16);
+    LCD_WR_DATA8(0x06);
+    LCD_WR_DATA8(0x0D);
+    LCD_WR_DATA8(0x2D);
+    LCD_WR_DATA8(0x26);
+    LCD_WR_DATA8(0x23);
+    LCD_WR_DATA8(0x27);
+    LCD_WR_DATA8(0x27);
+    LCD_WR_DATA8(0x25);
+    LCD_WR_DATA8(0x2D);
+    LCD_WR_DATA8(0x3B);
+    LCD_WR_DATA8(0x00);
+    LCD_WR_DATA8(0x01);
+    LCD_WR_DATA8(0x04);
+    LCD_WR_DATA8(0x13);
+
+    LCD_WR_REG(0x3A);   // RGB565
+    LCD_WR_DATA8(0x05);
+
+    LCD_WR_REG(0x29);   // Display on
+
+    UnlockLcd();
+
+    LCD_BLK_ON();
+
+    /* 可选：初始化后清一次屏 */
+    // LCD_Clear(BLACK);
 }
 /***************************************************************************//**
  * @brief 	设置显示地址
  * @param	x1 y1 x2 y2 坐标
 *******************************************************************************/
-void Address_set(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2)
-{
-	x1+=2;x2+=2;
-	LCD_WR_REG(0x2a);
-	LCD_WR_DATA8(x1>>8);
-	LCD_WR_DATA8(x1);
-	LCD_WR_DATA8(x2>>8);
-	LCD_WR_DATA8(x2);
+//void Address_set(uint16_t x1,uint16_t y1,uint16_t x2,uint16_t y2)
+//{
+//	x1+=2;x2+=2;
+//	LCD_WR_REG(0x2a);
+//	LCD_WR_DATA8(x1>>8);
+//	LCD_WR_DATA8(x1);
+//	LCD_WR_DATA8(x2>>8);
+//	LCD_WR_DATA8(x2);
+//
+//	y1+=1;y2+=1;
+//	LCD_WR_REG(0x2b);
+//	LCD_WR_DATA8(y1>>8);
+//	LCD_WR_DATA8(y1);
+//	LCD_WR_DATA8(y2>>8);
+//	LCD_WR_DATA8(y2);
+//	LCD_WR_REG(0x2C);
+//}
 
+void Address_set(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2)
+{
+	x1+=1;x2+=1;
 	y1+=1;y2+=1;
-	LCD_WR_REG(0x2b);
-	LCD_WR_DATA8(y1>>8);
-	LCD_WR_DATA8(y1);
-	LCD_WR_DATA8(y2>>8);
-	LCD_WR_DATA8(y2);
-	LCD_WR_REG(0x2C);
+    LCD_WR_REG(0x2a);
+    LCD_WR_DATA8(x1 >> 8);
+    LCD_WR_DATA8(x1);
+    LCD_WR_DATA8(x2 >> 8);
+    LCD_WR_DATA8(x2);
+
+    LCD_WR_REG(0x2b);
+    LCD_WR_DATA8(y1 >> 8);
+    LCD_WR_DATA8(y1);
+    LCD_WR_DATA8(y2 >> 8);
+    LCD_WR_DATA8(y2);
+
+    LCD_WR_REG(0x2C);   // 开始写显存
 }
 /***************************************************************************//**
  * @brief 	LCD清屏

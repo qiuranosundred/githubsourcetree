@@ -136,18 +136,20 @@ void StartDefaultTask(void const * argument)
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartDefaultTask */
-  Lcd_Init();
-  LCD_Clear(RED);
+//  Lcd_Init();
+  lv_init();
+  lv_port_disp_init();
+//  lv_port_indev_init();
+//  lv_demo_widgets();
 
-  BACK_COLOR = BLACK;
-  POINT_COLOR = WHITE;
+//  lv_demo_stress();
 
-//  checkMapFront();							/* 检查字库图库 */
-//  LCD_ShowImg(0,0,IMG_LOGO,0);				//LOGO
+  create_test_ui();           // ← 调用这里
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+		lv_task_handler();  // 刷新 LVGL 任务
+	    osDelay(10);
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -183,7 +185,7 @@ void communicationTaskFun(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+
   }
   /* USER CODE END communicationTaskFun */
 }
