@@ -25,12 +25,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "LCD.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -107,19 +105,20 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 5000);
-  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
-
-  /* definition and creation of FramSaveTask */
-  osThreadDef(FramSaveTask, framSaveTaskFun, osPriorityIdle, 0, 128);
-  FramSaveTaskHandle = osThreadCreate(osThread(FramSaveTask), NULL);
-
-  /* definition and creation of CommunicationTa */
-  osThreadDef(CommunicationTa, communicationTaskFun, osPriorityIdle, 0, 128);
-  CommunicationTaHandle = osThreadCreate(osThread(CommunicationTa), NULL);
+//  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 5000);
+//  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+//
+//  /* definition and creation of FramSaveTask */
+//  osThreadDef(FramSaveTask, framSaveTaskFun, osPriorityIdle, 0, 128);
+//  FramSaveTaskHandle = osThreadCreate(osThread(FramSaveTask), NULL);
+//
+//  /* definition and creation of CommunicationTa */
+//  osThreadDef(CommunicationTa, communicationTaskFun, osPriorityIdle, 0, 128);
+//  CommunicationTaHandle = osThreadCreate(osThread(CommunicationTa), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
+  MX_USB_DEVICE_Init();
+  app_task_create();
   /* USER CODE END RTOS_THREADS */
 
 }
@@ -136,20 +135,10 @@ void StartDefaultTask(void const * argument)
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartDefaultTask */
-//  Lcd_Init();
-  lv_init();
-  lv_port_disp_init();
-//  lv_port_indev_init();
-//  lv_demo_widgets();
-
-//  lv_demo_stress();
-
-  create_test_ui();           // ← 调用这里
   /* Infinite loop */
   for(;;)
   {
-		lv_task_handler();  // 刷新 LVGL 任务
-	    osDelay(10);
+    osDelay(10);
   }
   /* USER CODE END StartDefaultTask */
 }

@@ -3,32 +3,18 @@
 
 #include "main.h"
 
-//按键按下与松开的电平
-#define PRESS 0
 
-#if PRESS
-	#define LOOSEN 0
-#else
-	#define LOOSEN 1
-#endif
-
-
-#define SHORT_PRESS_TIME 10
-
-
-typedef struct
+typedef enum
 {
-	uint16_t Press_Time;
-	uint8_t Short_Press_Flag;
-	uint8_t text;
+    KEY_ID_UP = 0,
+    KEY_ID_DOWN,
+    KEY_ID_OK,
 
-}Key_Typedef;
+    KEY_ID_MAX
 
-extern Key_Typedef Key1;
-extern Key_Typedef Key2;
-extern Key_Typedef Key3;
+} key_id_t;
 
-void updateKeyTime(void);//更新按键时间 放入定时器
+uint8_t bsp_key_read(key_id_t id);
 
 
 #endif

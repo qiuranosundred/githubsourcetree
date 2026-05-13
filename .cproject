@@ -72,7 +72,13 @@
 									<listOptionValue builtIn="false" value="../LVGL/demo/keypad_encoder"/>
 									<listOptionValue builtIn="false" value="../LVGL/demo/stress"/>
 									<listOptionValue builtIn="false" value="../LVGL/demo/widgets"/>
-									<listOptionValue builtIn="false" value="../UI"/>
+									<listOptionValue builtIn="false" value="../APP/UI"/>
+									<listOptionValue builtIn="false" value="../APP/UI/generated"/>
+									<listOptionValue builtIn="false" value="../APP/UI/custom"/>
+									<listOptionValue builtIn="false" value="../INPUT"/>
+									<listOptionValue builtIn="false" value="../SYSTEM"/>
+									<listOptionValue builtIn="false" value="../APP/Pages"/>
+									<listOptionValue builtIn="false" value="../APP/Services"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.126762049" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -99,12 +105,20 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="BSP|Core|Drivers|LVGL|Middlewares|USB_DEVICE" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="APP|INPUT|SYSTEM|APP/UI|APP/UI/generated|APP/UI/custom|APP/Services|APP/Pages|BSP|Core|Drivers|LVGL|Middlewares|USB_DEVICE" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="Pages|Services|UI|UI/custom|UI/generated" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="APP"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="APP/Pages"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="APP/Services"/>
+						<entry excluding="custom|generated" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="APP/UI"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="APP/UI/custom"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="APP/UI/generated"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="BSP"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="INPUT"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="LVGL"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Middlewares"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="SYSTEM"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="USB_DEVICE"/>
 					</sourceEntries>
 				</configuration>

@@ -192,7 +192,8 @@ portFORCE_INLINE static void vPortRaiseBASEPRI( void )
 {
 uint32_t ulNewBASEPRI;
 
-	__asm volatile
+
+__asm volatile
 	(
 		"	mov %0, %1												\n"	\
 		"	msr basepri, %0											\n" \

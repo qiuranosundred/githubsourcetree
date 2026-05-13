@@ -226,7 +226,7 @@ void Lcd_Init(void)
 
 void Address_set(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2)
 {
-	x1+=1;x2+=1;
+	x1+=2;x2+=2;
 	y1+=1;y2+=1;
     LCD_WR_REG(0x2a);
     LCD_WR_DATA8(x1 >> 8);
